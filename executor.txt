@@ -1,0 +1,104 @@
+-- Instances:
+
+local Crescent = Instance.new("ScreenGui")
+local Crescent_2 = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Title = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local Clear = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Execute = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+Crescent.Name = "Crescent"
+Crescent.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Crescent_2.Name = "Crescent"
+Crescent_2.Parent = Crescent
+Crescent_2.BackgroundColor3 = Color3.fromRGB(27, 27, 27)
+Crescent_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Crescent_2.BorderSizePixel = 0
+Crescent_2.Position = UDim2.new(0.234234229, 0, 0.232421875, 0)
+Crescent_2.Size = UDim2.new(0, 471, 0, 274)
+
+UICorner.Parent = Crescent_2
+
+Title.Name = "Title"
+Title.Parent = Crescent_2
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Size = UDim2.new(0, 180, 0, 48)
+Title.Font = Enum.Font.DenkOne
+Title.Text = "Crescent"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+TextBox.Parent = Crescent_2
+TextBox.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+TextBox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0, 0, 0.175182477, 0)
+TextBox.Size = UDim2.new(0, 471, 0, 191)
+TextBox.ClearTextOnFocus = false
+TextBox.Font = Enum.Font.SourceSans
+TextBox.MultiLine = true
+TextBox.PlaceholderColor3 = Color3.fromRGB(111, 111, 111)
+TextBox.PlaceholderText = "Crescent On Top"
+TextBox.Text = "print(\"Crescent BETA\")"
+TextBox.TextColor3 = Color3.fromRGB(213, 213, 213)
+TextBox.TextSize = 14.000
+TextBox.TextXAlignment = Enum.TextXAlignment.Left
+TextBox.TextYAlignment = Enum.TextYAlignment.Top
+
+Clear.Name = "Clear"
+Clear.Parent = Crescent_2
+Clear.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+Clear.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Clear.BorderSizePixel = 0
+Clear.Position = UDim2.new(0.524416149, 0, 0.872262776, 0)
+Clear.Size = UDim2.new(0, 90, 0, 27)
+Clear.Font = Enum.Font.SourceSans
+Clear.Text = "Clear"
+Clear.TextColor3 = Color3.fromRGB(206, 206, 206)
+Clear.TextSize = 20.000
+
+UICorner_2.Parent = Clear
+
+Execute.Name = "Execute"
+Execute.Parent = Crescent_2
+Execute.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+Execute.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Execute.BorderSizePixel = 0
+Execute.Position = UDim2.new(0.284501076, 0, 0.872262776, 0)
+Execute.Size = UDim2.new(0, 90, 0, 27)
+Execute.Font = Enum.Font.SourceSans
+Execute.Text = "Execute"
+Execute.TextColor3 = Color3.fromRGB(206, 206, 206)
+Execute.TextSize = 20.000
+
+UICorner_3.Parent = Execute
+
+-- Scripts:
+
+local function PFTCS_fake_script() -- Clear.Script 
+	local script = Instance.new('Script', Clear)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		script.Parent.Parent.TextBox.Text = ""
+	end)
+end
+coroutine.wrap(PFTCS_fake_script)()
+local function CLRF_fake_script() -- Execute.Script 
+	local script = Instance.new('Script', Execute)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		loadstring(script.Parent.Parent.TextBox.Text)()
+	end)
+end
+coroutine.wrap(CLRF_fake_script)()
