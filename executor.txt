@@ -1,3 +1,9 @@
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Crescent BETA",
+    Text = "Crescent BETA has been loaded. Press right shift to open the Gui.",
+    Duration = 10
+})
+
 -- Instances:
 
 local Crescent = Instance.new("ScreenGui")
