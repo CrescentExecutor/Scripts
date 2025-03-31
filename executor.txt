@@ -86,19 +86,73 @@ UICorner_3.Parent = Execute
 
 -- Scripts:
 
-local function PFTCS_fake_script() -- Clear.Script 
+local function AVFTE_fake_script() -- Clear.Script 
 	local script = Instance.new('Script', Clear)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		script.Parent.Parent.TextBox.Text = ""
 	end)
 end
-coroutine.wrap(PFTCS_fake_script)()
-local function CLRF_fake_script() -- Execute.Script 
+coroutine.wrap(AVFTE_fake_script)()
+local function WTWJ_fake_script() -- Execute.Script 
 	local script = Instance.new('Script', Execute)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		loadstring(script.Parent.Parent.TextBox.Text)()
 	end)
 end
-coroutine.wrap(CLRF_fake_script)()
+coroutine.wrap(WTWJ_fake_script)()
+local function FCBIO_fake_script() -- Crescent_2.Drag 
+	local script = Instance.new('LocalScript', Crescent_2)
+
+	local gui = script.Parent  -- This refers to the parent of the LocalScript, which is MyFrame
+	local isOpen = true
+
+	-- Function to toggle GUI visibility
+	local function toggleGui()
+		isOpen = not isOpen
+		gui.Visible = isOpen
+	end
+
+	-- Key input to toggle GUI
+	local UserInputService = game:GetService("UserInputService")
+
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if not gameProcessed then
+			if input.KeyCode == Enum.KeyCode.RightShift then
+				toggleGui()
+			end
+		end
+	end)
+
+	-- Drag functionality
+	local dragging
+	local dragInput
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragInput.Position
+		gui.Position = UDim2.new(gui.Position.X.Scale, startPos.X.Offset + delta.X, gui.Position.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			dragging = true
+			dragInput = input
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
+			update(input)
+		end
+	end)
+end
+coroutine.wrap(FCBIO_fake_script)()
